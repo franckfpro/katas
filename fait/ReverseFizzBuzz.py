@@ -1,5 +1,16 @@
 import unittest
 
+def reverse_fizzbuzz(input: str) -> int:
+    match input:
+        case "Fizz":
+            return 3
+        case "Buzz":
+            return 5
+        case "FizzBuzz":
+            return 15
+        case _:
+            return int(input)
+
 class TestReverseFizzBuzz(unittest.TestCase):
     def test_fizz(self):
         self.assertEqual(reverse_fizzbuzz("Fizz"), 3)
