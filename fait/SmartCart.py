@@ -23,7 +23,12 @@ def ajouter_au_panier(
     article: str = "",
     panier: list[str] = [""]
 ) -> list[str]:
-    panier.append(article)
+    count = 0
+    for article_panier in panier:
+        if article_panier == article:
+            count += 1
+    if count < 3:
+        panier.append(article)
     return panier
 
 class TestSmartCart(unittest.TestCase):
