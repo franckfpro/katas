@@ -19,8 +19,12 @@ import unittest
 # On suppose que votre code sera dans un fichier nommé 'panier.py'
 #from panier import ajouter_au_panier
 
-def ajouter_au_panier(article: str, panier: list[str]) -> list[str]:
-    return []
+def ajouter_au_panier(
+    article: str = "",
+    panier: list[str] = [""]
+) -> list[str]:
+    panier.append(article)
+    return panier
 
 class TestSmartCart(unittest.TestCase):
 
