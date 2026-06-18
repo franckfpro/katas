@@ -58,7 +58,7 @@ class TestIsogramme(unittest.TestCase):
         """Vérifie les mots qui ont des lettres répétées."""
         self.assertFalse(est_isogramme("aba"))
         self.assertFalse(est_isogramme("moose"))
-        self.assertFalse(est_isogramme("déjà-vu"))  # Attention aux accents si non gérés, ici le 'à' et 'a' sont différents en Python pur, mais 'd' se répète.
+        self.assertTrue(est_isogramme("déjà-vu")
 
     def test_caracteres_speciaux_autorises(self):
         """Les espaces et tirets ne doivent pas invalider le mot."""
