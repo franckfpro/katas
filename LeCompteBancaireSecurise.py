@@ -3,21 +3,21 @@ KATA PYTHON #047 - Le Compte Bancaire Sécurisé
 Difficulté : 4/10
 
 ÉNONCÉ :
-Vous devez créer une classe `CompteBancaire` qui permet de gérer les opérations 
-de base d'un client (dépôt, retrait, consultation) tout en appliquant des 
+Vous devez créer une classe `CompteBancaire` qui permet de gérer les opérations
+de base d'un client (dépôt, retrait, consultation) tout en appliquant des
 règles de gestion strictes.
 
 On vous demande de compléter la classe `CompteBancaire` ci-dessous.
 
 RÈGLES ET CONTRAINTES :
-1. L'initialisation (`__init__`) prend un `titulaire` (str) et un `solde_initial` 
-   (float ou int, par défaut à 0.0). Si le `solde_initial` fourni est négatif, 
+1. L'initialisation (`__init__`) prend un `titulaire` (str) et un `solde_initial`
+   (float ou int, par défaut à 0.0). Si le `solde_initial` fourni est négatif,
    vous devez lever une exception de type `ValueError`.
-2. La méthode `deposer(montant)` ajoute l'argent au solde. Si le montant est 
+2. La méthode `deposer(montant)` ajoute l'argent au solde. Si le montant est
    inférieur ou égal à 0, l'opération doit lever une `ValueError`.
-3. La méthode `retirer(montant)` soustrait l'argent du solde. 
+3. La méthode `retirer(montant)` soustrait l'argent du solde.
    - Si le montant est inférieur ou égal à 0, lever une `ValueError`.
-   - Si le solde est insuffisant pour couvrir le retrait, lever une exception 
+   - Si le solde est insuffisant pour couvrir le retrait, lever une exception
      personnalisée `SoldeInsuffisantError` (déjà définie pour vous).
 4. La méthode `obtenir_solde()` doit simplement renvoyer le solde actuel.
 """
@@ -27,6 +27,7 @@ import unittest
 
 class SoldeInsuffisantError(Exception):
     """Exception levée lorsque le solde est insuffisant pour un retrait."""
+
     pass
 
 
@@ -57,6 +58,7 @@ class CompteBancaire:
 # =====================================================================
 # TESTS UNITAIRES (Ne pas modifier cette section)
 # =====================================================================
+
 
 class TestCompteBancaire(unittest.TestCase):
     """Suite de tests pour valider la classe CompteBancaire."""

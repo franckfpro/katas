@@ -3,23 +3,23 @@ KATA PYTHON #050 - Le Gestionnaire de Lecture
 Difficulté : 3/10
 
 ÉNONCÉ :
-Vous devez créer une classe `Livre` qui permet de suivre la progression de 
+Vous devez créer une classe `Livre` qui permet de suivre la progression de
 lecture d'un ouvrage.
 
 On vous demande de compléter la classe `Livre` ci-dessous.
 
 RÈGLES ET CONTRAINTES :
-1. L'initialisation (`__init__`) prend trois paramètres : `titre` (str), 
-   `auteur` (str) et `total_pages` (int). 
-   Un quatrième attribut nommé `page_actuelle` doit être initialisé à 0 (il ne 
+1. L'initialisation (`__init__`) prend trois paramètres : `titre` (str),
+   `auteur` (str) et `total_pages` (int).
+   Un quatrième attribut nommé `page_actuelle` doit être initialisé à 0 (il ne
    fait pas partie des paramètres du `__init__`).
-2. La méthode `avancer_lecture(nombre_pages)` ajoute le nombre de pages lues 
+2. La méthode `avancer_lecture(nombre_pages)` ajoute le nombre de pages lues
    à `page_actuelle`.
-   - Si la progression dépasse `total_pages`, `page_actuelle` doit être bloquée 
+   - Si la progression dépasse `total_pages`, `page_actuelle` doit être bloquée
      au maximum (égal à `total_pages`).
-3. La méthode `est_termine()` renvoie un booléen (`True` si le livre est 
+3. La méthode `est_termine()` renvoie un booléen (`True` si le livre est
    complètement lu, `False` sinon).
-4. La méthode spéciale `__str__(self)` doit renvoyer une chaîne de caractères 
+4. La méthode spéciale `__str__(self)` doit renvoyer une chaîne de caractères
    au format exact : "TITRE par AUTEUR (PAGE_ACTUELLE/TOTAL_PAGES)"
    Exemple : "Le Petit Prince par Antoine de Saint-Exupéry (45/90)"
 """
@@ -55,13 +55,16 @@ class Livre:
 # TESTS UNITAIRES (Ne pas modifier cette section)
 # =====================================================================
 
+
 class TestGestionnaireLivre(unittest.TestCase):
     """Suite de tests pour valider la classe Livre."""
 
     def test_initialisation(self):
         """Vérifie que les attributs de départ sont correctement configurés."""
         livre = Livre("Dune", "Frank Herbert", 600)
-        self.assertEqual(livre.titulaire if hasattr(livre, 'titulaire') else livre.titre, "Dune")
+        self.assertEqual(
+            livre.titulaire if hasattr(livre, "titulaire") else livre.titre, "Dune"
+        )
         self.assertEqual(livre.auteur, "Frank Herbert")
         self.assertEqual(livre.total_pages, 600)
         self.assertEqual(livre.page_actuelle, 0)
@@ -84,7 +87,7 @@ class TestGestionnaireLivre(unittest.TestCase):
         """Vérifie le format de la méthode magique __str__."""
         livre = Livre("Fondation", "Isaac Asimov", 250)
         livre.avancer_lecture(100)
-        
+
         attendu = "Fondation par Isaac Asimov (100/250)"
         self.assertEqual(str(livre), attendu)
 

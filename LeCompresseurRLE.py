@@ -3,8 +3,8 @@ KATA PYTHON #045 - Le Compresseur RLE (Run-Length Encoding)
 Difficulté : 5/10
 
 ÉNONCÉ :
-La compression RLE (Run-Length Encoding) est une méthode simple de compression 
-de données où les vagues de caractères identiques consécutifs sont remplacées 
+La compression RLE (Run-Length Encoding) est une méthode simple de compression
+de données où les vagues de caractères identiques consécutifs sont remplacées
 pas le caractère suivi du nombre de fois qu'il apparaît.
 
 On vous demande de compléter la fonction `compresser_rle`.
@@ -12,7 +12,7 @@ On vous demande de compléter la fonction `compresser_rle`.
 RÈGLES ET CONTRAINTES :
 1. La fonction prend une chaîne de caractères `texte` et renvoie sa version compressée.
 2. Si le texte est vide, renvoyez une chaîne vide.
-3. Attention : Même si un caractère n'apparaît qu'une seule fois, il doit TOUTEFOIS 
+3. Attention : Même si un caractère n'apparaît qu'une seule fois, il doit TOUTEFOIS
    être suivi du chiffre 1 (ex: "A" devient "A1").
 4. Le comportement doit être sensible à la casse ("A" et "a" sont deux groupes distincts).
 
@@ -34,6 +34,7 @@ def compresser_rle(texte: str) -> str:
 # =====================================================================
 # TESTS UNITAIRES (Ne pas modifier cette section)
 # =====================================================================
+
 
 class TestCompressionRLE(unittest.TestCase):
     """Suite de tests pour valider votre fonction compresser_rle."""

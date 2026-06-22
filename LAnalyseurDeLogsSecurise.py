@@ -3,20 +3,20 @@ KATA PYTHON #046 - L'Analyseur de Logs Sécurisé
 Difficulté : 3/10
 
 ÉNONCÉ :
-Vous écrivez un script pour analyser les fichiers de logs d'un serveur. Chaque 
+Vous écrivez un script pour analyser les fichiers de logs d'un serveur. Chaque
 ligne du fichier représente une requête et suit un format strict :
 "DATE | CODE_STATUT | MESSAGE" (ex: "2026-06-18 | 200 | OK")
 
-On vous demande de compléter la fonction `analyser_logs`. Elle prend en paramètre 
-un flux de texte (simulant un fichier ouvert) et doit renvoyer un dictionnaire 
+On vous demande de compléter la fonction `analyser_logs`. Elle prend en paramètre
+un flux de texte (simulant un fichier ouvert) et doit renvoyer un dictionnaire
 contenant le compte de chaque code statut rencontré.
 
 RÈGLES ET CONTRAINTES :
 1. Vous devez lire le flux ligne par ligne.
-2. Si une ligne est valide, vous devez extraire le `CODE_STATUT` (qui doit être 
+2. Si une ligne est valide, vous devez extraire le `CODE_STATUT` (qui doit être
    converti en entier `int`) et incrémenter son compteur dans le dictionnaire.
-3. Sécurité (Gestion des erreurs) : Si une ligne est mal formatée, s'il manque des 
-   séparateurs "|", ou si le code statut n'est pas un nombre valide, la fonction 
+3. Sécurité (Gestion des erreurs) : Si une ligne est mal formatée, s'il manque des
+   séparateurs "|", ou si le code statut n'est pas un nombre valide, la fonction
    ne doit PAS planter. Elle doit simplement ignorer cette ligne et passer à la suivante.
 4. Les espaces superflus autour des éléments (ex: " 200 ") doivent être nettoyés.
 
@@ -46,6 +46,7 @@ def analyser_logs(flux_fichier: io.TextIOBase) -> dict[int, int]:
 # TESTS UNITAIRES (Ne pas modifier cette section)
 # =====================================================================
 
+
 class TestAnalyseurLogs(unittest.TestCase):
     """Suite de tests pour valider votre fonction analyser_logs."""
 
@@ -59,7 +60,7 @@ class TestAnalyseurLogs(unittest.TestCase):
         )
         # io.StringIO simule un fichier ouvert en mémoire à partir d'une string
         fichier_virtuel = io.StringIO(contenu)
-        
+
         attendu = {200: 2, 404: 1, 500: 1}
         self.assertEqual(analyser_logs(fichier_virtuel), attendu)
 
@@ -72,18 +73,17 @@ class TestAnalyseurLogs(unittest.TestCase):
             "2026-06-18 | 404 | Toujours vivant\n"
         )
         fichier_virtuel = io.StringIO(contenu)
-        
+
         attendu = {200: 1, 404: 1}
         self.assertEqual(analyser_logs(fichier_virtuel), attendu)
 
     def test_nettoyage_espaces(self):
         """Les espaces autour du code statut ne doivent pas gêner la conversion."""
         contenu = (
-            "2026-06-18 |   200   | OK avec espaces\n"
-            "2026-06-18 | 200| OK collé\n"
+            "2026-06-18 |   200   | OK avec espaces\n" "2026-06-18 | 200| OK collé\n"
         )
         fichier_virtuel = io.StringIO(contenu)
-        
+
         attendu = {200: 2}
         self.assertEqual(analyser_logs(fichier_virtuel), attendu)
 

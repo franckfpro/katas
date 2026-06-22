@@ -3,19 +3,19 @@ KATA PYTHON #049 - Le Filtrage Temporel (Fonctions Lambda)
 Difficulté : 4/10
 
 ÉNONCÉ :
-On vous fournit une liste de dictionnaires représentant des événements 
-historiques ou des tâches. Chaque événement possède un "nom" (str) et 
+On vous fournit une liste de dictionnaires représentant des événements
+historiques ou des tâches. Chaque événement possède un "nom" (str) et
 une "annee" (int) qui peut être négative (pour l'avant J.-C.).
 
-On vous demande de compléter trois fonctions différentes. 
-CONTRAINTE MAJEURE : Vous devez obligatoirement utiliser une fonction `lambda` 
+On vous demande de compléter trois fonctions différentes.
+CONTRAINTE MAJEURE : Vous devez obligatoirement utiliser une fonction `lambda`
 à l'intérieur de chacune d'elles.
 
-1. `extraire_annees(evenements)` : Renvoie une liste contenant uniquement les 
+1. `extraire_annees(evenements)` : Renvoie une liste contenant uniquement les
    années de chaque événement (Indice : utilisez `map()`).
-2. `filtrer_avant_jc(evenements)` : Renvoie une sous-liste contenant uniquement 
+2. `filtrer_avant_jc(evenements)` : Renvoie une sous-liste contenant uniquement
    les événements dont l'année est strictement inférieure à 0 (Indice : utilisez `filter()`).
-3. `trier_par_annee(evenements)` : Renvoie une nouvelle liste d'événements 
+3. `trier_par_annee(evenements)` : Renvoie une nouvelle liste d'événements
    triés du plus ancien au plus récent (Indice : utilisez `sorted()` et son argument `key`).
 """
 
@@ -43,6 +43,7 @@ def trier_par_annee(evenements: list[dict]) -> list[dict]:
 # =====================================================================
 # TESTS UNITAIRES (Ne pas modifier cette section)
 # =====================================================================
+
 
 class TestLambdaOperations(unittest.TestCase):
     """Suite de tests pour valider les fonctions utilisant des lambdas."""
