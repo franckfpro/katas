@@ -27,7 +27,36 @@ def fizz_buzz_custom(n: int, regles: dict[int, str]) -> list[str]:
 
     Les règles doivent être appliquées dans l'ordre croissant des clés.
     """
+    resultat = []
+    for nbr in range(1,n+1):
+        resultat.append(str(nbr))
+        for k,v in regles.items():
+            if nbr % k == 0:
+                if resultat[nbr-1] == str(nbr):
+                    resultat[nbr-1] = ""
+                entry = resultat[nbr-1] + v
+                resultat[nbr-1]=entry
     return resultat
+
+"""
++ efficace:
+resultat = []
+    cles_triees = sorted(regles.keys())
+
+    for i in range(1, n + 1):
+        fragments = []
+        for cle in cles_triees:
+            if i % cle == 0:
+                fragments.append(regles[cle])
+
+        if fragments:
+            resultat.append("".join(fragments))
+        else:
+            resultat.append(str(i))
+
+    return resultat
+
+"""
 
 
 # =====================================================================
@@ -74,4 +103,4 @@ class TestFizzBuzzCustom(unittest.TestCase):
 
 if __name__ == "__main__":
     # Lancement des tests avec un feedback détaillé dans la console
-    unittest.main(verbosity=2)
+    unittest.main(verbosity=0)
