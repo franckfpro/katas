@@ -15,9 +15,10 @@ Si la file est vide, la chanson est ajoutée sans problème.
 Si la chanson est identique à la dernière chanson de la liste, la liste reste inchangée.
 """
 
+
 def ajouter_chanson(chanson: str, file_d_attente: list[str]) -> list[str]:
     """
-    Ajoute une chanson à la file d'attente si elle est différente 
+    Ajoute une chanson à la file d'attente si elle est différente
     de la dernière chanson de la liste.
     """
     if not file_d_attente or file_d_attente[-1] != chanson:

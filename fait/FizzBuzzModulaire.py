@@ -4,14 +4,14 @@ Difficulté : 3/10
 
 ÉNONCÉ :
 On vous demande de créer une fonction `fizz_buzz_custom` qui prend en paramètre
-un nombre entier positif `n` et un dictionnaire `regles`. 
-Le dictionnaire contient des nombres entiers en clés et des chaînes de 
+un nombre entier positif `n` et un dictionnaire `regles`.
+Le dictionnaire contient des nombres entiers en clés et des chaînes de
 caractères en valeurs (ex: {3: "Fizz", 5: "Buzz"}).
 
 La fonction doit retourner une liste des représentations sous forme de chaîne
 de caractères de 1 à `n` inclus. Cependant :
-- Si le nombre est divisible par une ou plusieurs clés du dictionnaire, on 
-  remplace le nombre par la concaténation des valeurs correspondantes (dans 
+- Si le nombre est divisible par une ou plusieurs clés du dictionnaire, on
+  remplace le nombre par la concaténation des valeurs correspondantes (dans
   l'ordre croissant des clés).
 - Sinon, on garde le nombre sous forme de chaîne de caractères (ex: "1").
 
@@ -28,15 +28,16 @@ def fizz_buzz_custom(n: int, regles: dict[int, str]) -> list[str]:
     Les règles doivent être appliquées dans l'ordre croissant des clés.
     """
     resultat = []
-    for nbr in range(1,n+1):
+    for nbr in range(1, n + 1):
         resultat.append(str(nbr))
-        for k,v in regles.items():
+        for k, v in regles.items():
             if nbr % k == 0:
-                if resultat[nbr-1] == str(nbr):
-                    resultat[nbr-1] = ""
-                entry = resultat[nbr-1] + v
-                resultat[nbr-1]=entry
+                if resultat[nbr - 1] == str(nbr):
+                    resultat[nbr - 1] = ""
+                entry = resultat[nbr - 1] + v
+                resultat[nbr - 1] = entry
     return resultat
+
 
 """
 + efficace:
@@ -63,6 +64,7 @@ resultat = []
 # TESTS UNITAIRES
 # =====================================================================
 
+
 class TestFizzBuzzCustom(unittest.TestCase):
     """Suite de tests pour valider le comportement de fizz_buzz_custom."""
 
@@ -74,8 +76,21 @@ class TestFizzBuzzCustom(unittest.TestCase):
     def test_cas_classique_fizzbuzz(self):
         """Vérifie le comportement standard de FizzBuzz jusqu'à 15."""
         attendu = [
-            "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz",
-            "11", "Fizz", "13", "14", "FizzBuzz"
+            "1",
+            "2",
+            "Fizz",
+            "4",
+            "Buzz",
+            "Fizz",
+            "7",
+            "8",
+            "Fizz",
+            "Buzz",
+            "11",
+            "Fizz",
+            "13",
+            "14",
+            "FizzBuzz",
         ]
         self.assertEqual(fizz_buzz_custom(15, self.regles_classiques), attendu)
 
@@ -95,8 +110,20 @@ class TestFizzBuzzCustom(unittest.TestCase):
         # 4 est divisible par 2 et 4 -> FooBar
         # 14 est divisible par 2 et 7 -> FooBaz
         attendu = [
-            "1", "Foo", "3", "FooBar", "5", "Foo", "Baz", 
-            "FooBar", "9", "Foo", "11", "FooBar", "13", "FooBaz"
+            "1",
+            "Foo",
+            "3",
+            "FooBar",
+            "5",
+            "Foo",
+            "Baz",
+            "FooBar",
+            "9",
+            "Foo",
+            "11",
+            "FooBar",
+            "13",
+            "FooBaz",
         ]
         self.assertEqual(fizz_buzz_custom(14, self.regles_complexes), attendu)
 

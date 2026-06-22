@@ -11,7 +11,7 @@ une chaîne de caractères `texte` et renvoie un booléen (`True` ou `False`).
 
 RÈGLES ET CONTRAINTES :
 1. La casse doit être ignorée : "A" et "a" sont considérés comme la même lettre.
-2. Les espaces et les tirets ("-") ne comptent PAS comme des répétitions. Ils 
+2. Les espaces et les tirets ("-") ne comptent PAS comme des répétitions. Ils
    peuvent apparaître plusieurs fois sans invalider l'isogramme.
 3. Si la chaîne est vide, elle est considérée comme un isogramme valide.
 
@@ -48,6 +48,7 @@ def est_isogramme(texte: str) -> bool:
 # TESTS UNITAIRES (Ne pas modifier cette section)
 # =====================================================================
 
+
 class TestIsogramme(unittest.TestCase):
     """Suite de tests pour valider votre fonction est_isogramme."""
 
@@ -61,7 +62,7 @@ class TestIsogramme(unittest.TestCase):
     def test_isogrammes_avec_majuscules(self):
         """La casse ne devrait pas impacter le résultat."""
         self.assertTrue(est_isogramme("Alphabet"))  # 'A' et 'a' se répètent
-        self.assertFalse(est_isogramme("Abba"))      # Répétitions multiples
+        self.assertFalse(est_isogramme("Abba"))  # Répétitions multiples
 
     def test_mots_invalides(self):
         """Vérifie les mots qui ont des lettres répétées."""
@@ -73,7 +74,9 @@ class TestIsogramme(unittest.TestCase):
         """Les espaces et tirets ne doivent pas invalider le mot."""
         self.assertTrue(est_isogramme("six-year-old"))
         self.assertTrue(est_isogramme("thumbscrew-jingly"))
-        self.assertFalse(est_isogramme("arrière-grand-père"))  # 'r', 'e', etc. se répètent
+        self.assertFalse(
+            est_isogramme("arrière-grand-père")
+        )  # 'r', 'e', etc. se répètent
 
 
 if __name__ == "__main__":
