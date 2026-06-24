@@ -32,23 +32,28 @@ class Livre:
 
     def __init__(self, titre: str, auteur: str, total_pages: int):
         """Initialise un livre avec son titre, auteur et le nombre total de pages."""
-        # TODO: Initialiser titre, auteur, total_pages et page_actuelle (à 0)
-        pass
+        self.titre: str = titre
+        self.auteur: str = auteur
+        self.total_pages: int = total_pages
+        self.page_actuelle: int = 0
 
     def avancer_lecture(self, nombre_pages: int) -> None:
         """Avance le marque-page du nombre de pages lues sans dépasser le total."""
-        # TODO: Implémenter la logique de progression
-        pass
+        self.page_actuelle += nombre_pages
+        if self.page_actuelle > self.total_pages:
+            self.page_actuelle = self.total_pages
 
     def est_termine(self) -> bool:
         """Indique si le livre a été entièrement lu."""
-        # TODO: Retourner le booléen correspondant
-        pass
+        if self.page_actuelle == self.total_pages:
+            return True
+        return False
 
     def __str__(self) -> str:
         """Renvoie la représentation textuelle de l'état du livre."""
-        # TODO: Retourner la chaîne formatée demandée
-        pass
+        return (
+            f"{self.titre} par {self.auteur} ({self.page_actuelle}/{self.total_pages})"
+        )
 
 
 # =====================================================================
