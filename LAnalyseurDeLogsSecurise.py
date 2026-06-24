@@ -38,8 +38,20 @@ def analyser_logs(flux_fichier: io.TextIOBase) -> dict[int, int]:
 
     Ignore les lignes corrompues ou mal formées.
     """
-    # TODO: Implémenter la logique ici
-    pass
+    result = {}
+    lecture_ligne = []
+    for ligne in flux_fichier:
+        lecture_ligne.append(ligne.strip())
+    for ligne in lecture_ligne:
+        try:
+            code = int(ligne.split("|")[1].strip())
+            if code in result:
+                result[code] += 1
+            else:
+                result[code] = 1
+        except:
+            pass
+    return result
 
 
 # =====================================================================
