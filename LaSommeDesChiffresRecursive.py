@@ -31,12 +31,11 @@ def somme_chiffres(n: int) -> int:
 
     Interdiction d'utiliser des boucles ou des chaînes de caractères.
     """
-    result = 0
-    if n == 0:
-        return result
-    last = str(n)[-1]
-    int(last) += result
-    somme_chiffres(int(str(n)[:-1]))
+    if n <= 9:
+        return n
+    last = n % 10
+    suivant = n // 10
+    return last + somme_chiffres(suivant)
 
 
 # =====================================================================
