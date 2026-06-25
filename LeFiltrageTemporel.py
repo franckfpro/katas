@@ -24,20 +24,17 @@ import unittest
 
 def extraire_annees(evenements: list[dict]) -> list[int]:
     """Extrait et retourne la liste de toutes les années des événements."""
-    # TODO: Utiliser un lambda et map() (n'oubliez pas de convertir le résultat de map en list)
-    pass
+    return list(map(lambda x: x["annee"], evenements))
 
 
 def filtrer_avant_jc(evenements: list[dict]) -> list[dict]:
     """Retourne uniquement les événements ayant eu lieu avant l'an 0 (année < 0)."""
-    # TODO: Utiliser un lambda et filter() (n'oubliez pas de convertir le résultat en list)
-    pass
+    return list(filter(lambda x: x["annee"] < 0, evenements))
 
 
 def trier_par_annee(evenements: list[dict]) -> list[dict]:
     """Retourne une nouvelle liste d'événements triés par ordre chronologique."""
-    # TODO: Utiliser sorted() avec un lambda passé au paramètre 'key'
-    pass
+    return list(sorted(evenements, key=lambda x: x["annee"]))
 
 
 # =====================================================================
