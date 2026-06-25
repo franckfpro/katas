@@ -31,8 +31,12 @@ def somme_chiffres(n: int) -> int:
 
     Interdiction d'utiliser des boucles ou des chaînes de caractères.
     """
-    # TODO: Implémenter le cas de base et le cas récursif ici
-    pass
+    result = 0
+    if n == 0:
+        return result
+    last = str(n)[-1]
+    int(last) += result
+    somme_chiffres(int(str(n)[:-1]))
 
 
 # =====================================================================
