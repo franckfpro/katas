@@ -43,8 +43,23 @@ def fusionner_inventaires(joueur: dict, coffre: dict) -> dict:
 
     et de quantité. Retourne un nouveau dictionnaire.
     """
-    # TODO: Implémenter la logique ici
-    pass
+    joueurcopy = copy.deepcopy(joueur)
+    coffrecopy = copy.deepcopy(coffre)
+    rarete = {"epique": 3, "rare": 2, "commun": 1}
+
+    for k, v in joueurcopy.items():
+        if k in coffrecopy:
+            if rarete[joueurcopy[k]["rarete"]] > rarete[coffrecopy[k]["rarete"]]:
+                coffrecopy[k]["quantite"] = 0
+            elif rarete[joueurcopy[k]["rarete"]] < rarete[coffrecopy[k]["rarete"]]:
+                joueurcopy[k]["quantite"] = 0
+                joueurcopy[k]["rarete"] = coffrecopy[k]["rarete"]
+            joueurcopy[k]["quantite"] += coffrecopy[k]["quantite"]
+            coffrecopy.pop(k)
+    if len(coffrecopy) != 0:
+        for k2, v2 in coffrecopy.items():
+            joueurcopy[k2] = v2
+    return joueurcopy
 
 
 # =====================================================================
