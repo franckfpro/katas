@@ -36,23 +36,28 @@ class CompteBancaire:
 
     def __init__(self, titulaire: str, solde_initial: float = 0.0):
         """Initialise le compte avec un titulaire et un solde initial."""
-        # TODO: Initialiser les attributs de l'objet et valider le solde_initial
-        pass
+        if solde_initial < 0:
+            raise ValueError("Le solde initial ne peut pas être négatif.")
+        self.titulaire = titulaire
+        self.solde = solde_initial
 
     def deposer(self, montant: float) -> None:
         """Dépose de l'argent sur le compte."""
-        # TODO: Implémenter la logique et les validations
-        pass
+        if montant <= 0:
+            raise ValueError("Le montant à déposer doit être positif.")
+        self.solde += montant
 
     def retirer(self, montant: float) -> None:
         """Retire de l'argent du compte si le solde le permet."""
-        # TODO: Implémenter la logique, les validations et l'exception sur mesure
-        pass
+        if montant <= 0:
+            raise ValueError("Le montant à retirer doit être positif.")
+        if self.solde < montant:
+            raise SoldeInsuffisantError("Solde insuffisant pour effectuer le retrait.")
+        self.solde -= montant
 
     def obtenir_solde(self) -> float:
         """Renvoie le solde actuel du compte."""
-        # TODO: Retourner le bon attribut
-        pass
+        return self.solde
 
 
 # =====================================================================
