@@ -27,8 +27,22 @@ import unittest
 
 def compresser_rle(texte: str) -> str:
     """Compresse une chaîne de caractères en utilisant l'algorithme RLE."""
-    # TODO: Implémenter la logique ici
-    pass
+    if len(texte) == 0:
+        return ""
+    result = []
+    resultstring = ""
+    result.append(texte[0])
+    result.append(1)
+    for letter in texte[1:]:
+        if letter == result[-2]:
+            result[-1] += 1
+        else:
+            result.append(letter)
+            result.append(1)
+    for e in result:
+        resultstring += str(e)
+
+    return resultstring
 
 
 # =====================================================================
