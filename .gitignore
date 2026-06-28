@@ -28,7 +28,9 @@ go.work.sum
 .env
 
 # Editor/IDE
+ .idea
  .idea/
+ .idea/*
  .vscode/
 
 # Byte-compiled / optimized / DLL files
