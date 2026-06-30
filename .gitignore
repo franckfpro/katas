@@ -30,7 +30,8 @@ go.work.sum
 # Editor/IDE
  .idea
  .idea/
- .idea/*
+ *.xml
+ *.iml
  .vscode/
 
 # Byte-compiled / optimized / DLL files
