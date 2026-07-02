@@ -75,6 +75,51 @@ def is_valid_isbn(isbn_str: str) -> bool:
         return True
     return False
 
+# solution bis
+
+def is_valid_isbn(isbn_str: str) -> bool:
+    """
+    Vérifie si une chaîne de caractères est un ISBN-10 ou ISBN-13 valide.
+    """
+    # Nettoyage de la chaîne : on retire les espaces et les tirets
+    cleaned = isbn_str.replace(" ", "").replace("-", "")
+    
+    # --- Validation ISBN-13 ---
+    if len(cleaned) == 13 and cleaned.isdigit():
+        digits = [int(char) for char in cleaned]
+        total = 0
+        for i in range(12):
+            weight = 1 if i % 2 == 0 else 3
+            total += digits[i] * weight
+        
+        check_digit = (10 - (total % 10)) % 10
+        return digits[12] == check_digit
+
+    # --- Validation ISBN-10 ---
+    elif len(cleaned) == 10:
+        # Les 9 premiers caractères doivent être des chiffres
+        if not cleaned[:9].isdigit():
+            return False
+        
+        # Le dernier caractère peut être un chiffre ou 'X'
+        last_char = cleaned[9].upper()
+        if not (last_char.isdigit() or last_char == 'X'):
+            return False
+        
+        # Calcul de la somme pondérée
+        total = 0
+        for i in range(9):
+            total += int(cleaned[i]) * (i + 1)
+        
+        # Gestion du cas particulier 'X'
+        last_value = 10 if last_char == 'X' else int(last_char)
+        total += last_value * 10
+        
+        return total % 11 == 0
+
+    return False
+
+
 # ==============================================================================
 # TESTS UNITAIRES
 # ==============================================================================
